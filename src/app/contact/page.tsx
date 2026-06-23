@@ -65,6 +65,8 @@ export default function ContactPage() {
               action="https://form.run/api/v1/r/j34lzbj8xw4jbopzonhaui5r"
               method="post"
             >
+              <input type="hidden" name="_redirect" value="/contact/thanks" />
+
               <div className="grid gap-6 sm:grid-cols-2">
                 <div>
                   <label className="text-sm font-semibold">会社名</label>
