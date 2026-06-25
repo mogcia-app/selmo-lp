@@ -219,48 +219,36 @@ const comparisonRows = [
 const pricingPlans = [
   {
     plan: "スタンダード",
-    price: "45,000円/月",
-    content: "商談アップロード15回/月、ロープレ15回/月",
+    price: "29,800円/月",
+    content: "商談分析またはテレアポ分析 10回/月、AIロープレ 15回/月",
   },
   {
     plan: "プロ",
-    price: "90,000円/月",
-    content: "商談アップロード30回/月、ロープレ30回/月",
+    price: "55,000円/月",
+    content: "商談分析またはテレアポ分析 20回/月、AIロープレ 30回/月",
   },
   {
     plan: "カスタム",
     price: "個別見積もり",
-    content: "30回超、長時間音声、大人数利用、特殊運用",
+    content: "商談・テレアポ両方の利用、長時間音声、大人数利用、回数追加、個別運用に対応",
   },
 ];
 
-const includedItems = [
-  {
-    item: "商談音声アップロード",
-    content: "音声データのアップロード、文字起こし、要約、振り返り",
-  },
-  {
-    item: "ロープレ機能",
-    content: "AI相手の営業ロープレ、会話記録、評価・フィードバック",
-  },
-  {
-    item: "AI処理枠",
-    content: "文字起こし、要約、分析、評価などのAI処理",
-  },
-  {
-    item: "データ管理",
-    content: "商談履歴、ロープレ履歴、ナレッジの保存",
-  },
-  {
-    item: "基本サポート",
-    content: "初期設定、操作案内、軽微な調整対応",
-  },
+const customPlanItems = [
+  "商談分析・テレアポ分析の両方利用",
+  "月20回を超える音声分析",
+  "1回60分を超える長時間音声",
+  "AIロープレ回数の追加",
+  "複数ユーザー・チーム単位での導入",
+  "管理者向け分析・運用設計",
 ];
 
 const pricingNotes = [
-  "音声アップロードは1回あたり最大2時間まで",
+  "スタンダード・プロは、商談分析またはテレアポ分析のいずれかを選択してご利用いただけます",
+  "音声アップロードは1回あたり最大60分までです",
+  "60分を超える長時間音声、商談・テレアポ両方の利用はカスタムプランで対応します",
   "月内未使用分の翌月繰り越しはありません",
-  "上限回数を超える利用は個別見積もりとなります",
+  "上限回数を超える利用は追加契約またはカスタムプランでのご案内となります",
   "大容量音声や特殊なファイル形式が多い場合は、事前にご相談ください",
   "表示価格は税別です",
 ];
@@ -350,9 +338,9 @@ export default function Home() {
                 <BrandMark />
               </p>
               <p className="mt-5 max-w-2xl text-sm leading-6 text-muted-foreground sm:mt-7 sm:text-xl sm:leading-8">
-                商談分析・テレアポ分析・ロープレ・ナレッジ管理をひとつに
+                商談・テレアポ分析・ロープレ・ナレッジ管理をひとつに
                 <br />
-                営業教育を仕組み化するAIプラットフォーム
+                営業教育を仕組み化する営業育成AIツール
               </p>
               <div className="mt-9 hidden flex-col gap-3 sm:flex sm:flex-row">
                 <Button asChild size="lg" variant="outline">
@@ -476,7 +464,7 @@ export default function Home() {
                   </span>
                   <BrandMark /> は、営業担当者の商談・テレアポ・ロープレをAIが分析し
                   <br />
-                  個人の成長と組織の標準化を同時に実現する 営業特化AIプラットフォーム です
+                  個人の成長と組織の標準化を同時に実現する 営業育成AIツール です
                 </span>
               }
             />
@@ -726,15 +714,26 @@ export default function Home() {
             <div className="grid gap-8 lg:grid-cols-[1fr_0.82fr]">
               <Reveal delay={0.08}>
                 <div className="h-full rounded-xl border border-border bg-white p-6 shadow-line">
-                  <h3 className="text-xl font-semibold">各プランに含まれるもの</h3>
-                  <div className="mt-6 divide-y divide-border">
-                    {includedItems.map((row) => (
-                      <div key={row.item} className="grid gap-2 py-4 sm:grid-cols-[0.7fr_1fr]">
-                        <p className="font-semibold">{row.item}</p>
-                        <p className="leading-7 text-muted-foreground">{row.content}</p>
-                      </div>
-                    ))}
+                  <h3 className="text-xl font-semibold">カスタムプラン</h3>
+                  <div className="mt-5 space-y-4 leading-7 text-muted-foreground">
+                    <p>
+                      営業組織の運用に合わせて、利用回数・音声時間・対象機能・管理方法を個別に設計するプランです。
+                    </p>
+                    <p>
+                      商談分析とテレアポ分析をどちらも使いたい場合、1時間を超える長時間音声を扱う場合、複数メンバーでの利用や代理店・研修用途で利用したい場合は、カスタムプランでご案内します。
+                    </p>
                   </div>
+                  <h4 className="mt-7 text-sm font-bold text-muted-foreground">
+                    カスタムで対応できる内容
+                  </h4>
+                  <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {customPlanItems.map((item) => (
+                      <li key={item} className="flex gap-3 text-sm leading-7">
+                        <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-primary-hover" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </Reveal>
 
